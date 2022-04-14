@@ -17,7 +17,7 @@
                 }
         </style>
         <section class="todayDatas">
-        <h1 class="text-center mt-5 mb-5">Les chiffres du COVID19 en France</h1>
+                <h1 class="text-center mt-5 mb-5">Les chiffres du COVID19 en France</h1>
                 <div class="container">
                         <div class="row gy-3 gx-3">
                                 <div class="col-12 col-md-4 hospitalisations">
@@ -91,29 +91,38 @@
         </section>
 
         <section id="by-departement" class="mt-5">
-        <h1 class="text-center">Par département</h1>
-            <div class="container">
-                 <div class="row gy-3 gx-3">
-                    {% for departement in departements %}
-                    <div class="col-12 col-md-3 data-source">
-                                        <div class="card shadow border-0">
-                                                <div class="card-body">
-                                                        <h5 class="card-title btn btn-primary">{{ departement.reg }}</h5>
-                                                        <h4 class="sous-titre text-primary">{{ departement.lib_dep }}</h4>
-                                                        <p class="card-text">
-                                                                <ul>
-                                                                    <li><strong class="">Hospitalisations :</strong> {{ departement.hosp }}</li>
-                                                                    <li><strong class="">Réanimations : </strong> {{ departement.rea }}</li>
-                                                                    <li><strong class="">Guérisons : </strong> {{ departement.rad }}</li>
-                                                                </ul>
-                                                        </p>
-                                                        <a href="{{ path('departement', {'department': departement.lib_dep}) }}"class="btn btn-primary">Détails</a>
+                <h1 class="text-center">Par département</h1>
+                <div class="container">
+                        <div class="row gy-3 gx-3">
+                                {% for departement in departements %}
+                                        <div class="col-12 col-md-3 data-source">
+                                                <div class="card">
+                                                        <div class="card-body">
+                                                                <h5 class="card-title">{{ departement.lib_dep }}</h5>
+                                                                <p class="card-text">
+                                                                        {{ departement.dep }}
+                                                                </p>
+
+
+                                                        </div>
+                                                        <ul class="list-group list-group-flush">
+                                                                <li class="list-group-item">
+                                                                        <strong class="">Hospitalisations :</strong>
+                                                                        {{ departement.hosp }}</li>
+                                                                <li class="list-group-item">
+                                                                        <strong class="">Réanimations :
+                                                                        </strong>
+                                                                        {{ departement.rea }}</li>
+                                                                <li class="list-group-item">
+                                                                        <strong class="">Guérisons :
+                                                                        </strong>
+                                                                        {{ departement.rad }}</li>
+                                                        </ul>
+                                                        <a href="{{ path('departement', {'department': departement.lib_dep}) }}" class="btn btn-primary">Détails</a>
                                                 </div>
                                         </div>
-                                </div>
-                    {% endfor %}
+                                {% endfor %}
+                        </div>
                 </div>
-            </div>
         </section>
-        </div>
-{% endblock %}
+</div>{% endblock %}

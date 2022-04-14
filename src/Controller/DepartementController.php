@@ -22,7 +22,7 @@ class DepartementController extends AbstractController
         $rea = [];
 
         for ($i = 1; $i < 8; ++$i) {
-            $date = new DateTime('- '.$i.' day');
+            $date = new DateTime('- '.$i.' month');
             $datas = $callApiService->getDataByDepartmentByDate($department, $date->format('d-m-Y'));
 
             $label[] = $datas[0]['date'];
