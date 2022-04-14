@@ -8,6 +8,6 @@ Pages permettant de consulter des statistiques sur le Covid19.
 ## Installation
 ```bash
 composer install
-npm run buil
+npm run build
 symfony serve -d
 ```
