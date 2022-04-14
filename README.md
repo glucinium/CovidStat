@@ -1,4 +1,8 @@
-# Test du client HTTP symfony
+# Covid stats
+Pages permettant de consulter des statistiques sur le Covid19
+à partir de l'API : CoronavirusAPI-France
+
+Graphics avec chartjs.
 
 ## Installation
 ```bash
