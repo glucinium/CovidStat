@@ -16,35 +16,35 @@ class CallApiService
 
     public function getFranceData(): array
     {
-        $response = $this->client->request(
-                'GET',
-                'https://coronavirusapifr.herokuapp.com/data/france-by-date/13-04-2022'
-        );
-
-        $statusCode = $response->getStatusCode();
-
-        if ($statusCode == '200') {
-            return $response->toArray();
-        } else {
-            throw new Exception('Echec de la requête, statusCode = '.$statusCode);
-        }
+        return $this->getApi('france-by-date/13-04-2022');
     }
 
-    public function fetch(): array
+    public function getAllLiveData(): array
+    {
+        return $this->getApi('live/departements');
+    }
+
+    public function getDataByDepartmentByDate($department, $date): array
+    {
+        return $this->getApi('departement/'.$department.'/'.$date);
+    }
+
+    public function getDepartmentData($department): array
+    {
+        return $this->getApi('live/departement/'.$department);
+    }
+
+    public function getApi(string $uri): array
     {
         $response = $this->client->request(
-                'GET',
-                'https://api.github.com/repos/symfony/symfony-docs'
+                    'GET',
+                    'https://coronavirusapifr.herokuapp.com/data/'.$uri
         );
 
-        $statusCode = $response->getStatusCode();
-
-        $contentType = $response->getHeaders()['content-type'][0];
-
-        $content = $response->getContent();
-
-        $content = $response->toArray();
-
-        return $content;
+        if ($response->getStatusCode() == 200) {
+            return $response->toArray();
+        } else {
+            throw new Exception('Erreur lors de la requête sur : "'.$uri.'", status code : '.$response->getStatusCode());
+        }
     }
 }

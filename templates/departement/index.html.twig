@@ -1,0 +1,76 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello DepartementController!
+{% endblock %}
+
+{% block body %}
+        <section id="main">
+            <div class="container">
+                <h1 class="text-center">Les chiffres du COVID19 |
+                        {{ data.0.lib_dep }}</h1>
+
+                <h2 class="text-center">{{ data.0.lib_reg }}</h2>
+                <p class="text-center">Sources : CoronavirusAPI-France</p>
+                <p class="text-center">Date d'actualisation :
+                        {{ data.0.date }}</p>
+                <div class="card mb-5 shadow-lg">
+                    {{ render_chart(chart) }}
+                </div>
+            </div>
+        </section>
+        <section id="datas">
+                <div class="container mt-5">
+                        <div class="row gy-3 gx-3">
+                                <div class="col-12 col-md-4">
+                                        {% include '_base/_stats-card.html.twig' with 
+                                        {
+                                            title : 'Hospitalisations', 
+                                            value : data.0.hosp,
+                                            description : "Nombre de personnes actuellement hospitalisées"
+                                        } 
+                                        %}
+                                </div>
+                                <div class="col-12 col-md-4 ">
+                                        {% include '_base/_stats-card.html.twig' with 
+                                        {
+                                            title : 'Réanimations', 
+                                            value : data.0.rea,
+                                            description : " Nombre de personnes actuellement en réanimation"
+                                        } 
+                                        %}
+                                </div>
+                                <div class="col-12 col-md-4">
+                                        {% include '_base/_stats-card.html.twig' with 
+                                        {
+                                            title : "Décès", 
+                                            value : data.0.dchosp,
+                                            description : "Décès à l'hôpital"
+                                        } 
+                                        %}
+                                </div>
+                                <div class="col-12 col-md-4">
+                                        {% include '_base/_stats-card.html.twig' with 
+                                        {
+                                            title : 'Guérisons', 
+                                            value : data.0.rad,
+                                            description : "Nombre total de retour à domicile"
+                                        } 
+                                        %}
+                                </div>
+                                <div class="col-12 col-md-4">
+                                        {% include '_base/_stats-card.html.twig' with 
+                                        {
+                                            title : 'Nouveaux décès /24h', 
+                                            value : data.0.dchosp,
+                                            description : "Nouveaux patients décédés à l’hôpital au cours des dernières 24h."
+                                        } 
+                                        %}
+                                </div>
+                        </div>
+                </div>
+        </section>
+
+        <section id="main">
+                <div class="container"></div>
+        </section>
+{% endblock %}

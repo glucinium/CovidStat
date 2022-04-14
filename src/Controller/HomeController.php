@@ -14,11 +14,10 @@ class HomeController extends AbstractController
      */
     public function index(CallApiService $callApiService): Response
     {
-        //var_dump($callApiService->getFranceData());
-
         return $this->render('home/index.html.twig', [
             'controller_name' => 'HomeController',
             'data' => $callApiService->getFranceData(),
+            'departements' => $callApiService->getAllLiveData(),
         ]);
     }
 }
