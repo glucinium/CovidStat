@@ -1,8 +1,9 @@
 # Covid stats
-Pages permettant de consulter des statistiques sur le Covid19
-à partir de l'API : CoronavirusAPI-France
+Pages permettant de consulter des statistiques sur le Covid19.
 
-Graphics avec chartjs.
+- Avec Symfony 6
+- à partir de l'API : CoronavirusAPI-France
+- Graphics avec chartjs.
 
 ## Installation
 ```bash
