@@ -1,20 +1,93 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello HomeController!{% endblock %}
+{% block title %}Hello HomeController!
+{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
-
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ '/Users/guillaume/Sites/COURS/travaillerAvecUneApiExterne/src/Controller/HomeController.php'|file_link(0) }}">src/Controller/HomeController.php</a></code></li>
-        <li>Your template at <code><a href="{{ '/Users/guillaume/Sites/COURS/travaillerAvecUneApiExterne/templates/home/index.html.twig'|file_link(0) }}">templates/home/index.html.twig</a></code></li>
-    </ul>
-</div>
+        <style>
+                .example-wrapper {
+                        margin: 1em auto;
+                        max-width: 800px;
+                        width: 95%;
+                        font: 18px / 1.5 sans-serif;
+                }
+                .example-wrapper code {
+                        background: #F5F5F5;
+                        padding: 2px 6px;
+                }
+        </style>
+        <section class="todayDatas">
+        <h1 class="text-center mt-5 mb-5">Les chiffres du COVID19 en France</h1>
+                <div class="container">
+                        <div class="row gy-3 gx-3">
+                                <div class="col-12 col-md-4 hospitalisations">
+                                        <div class="card shadow border-0">
+                                                <div class="card-body">
+                                                        <h5 class="card-title">Hospitalisations</h5>
+                                                        <p class="card-text">
+                                                                Nombre de personnes actuellement hospitalisées
+                                                        </p>
+                                                        <a href="" class="btn btn-warning">{{ data.0.hosp }}</a>
+                                                </div>
+                                        </div>
+                                </div>
+                                <div class="col-12 col-md-4 reanimation">
+                                        <div class="card shadow border-0">
+                                                <div class="card-body">
+                                                        <h5 class="card-title">Réanimations</h5>
+                                                        <p class="card-text">
+                                                                Nombre de personnes actuellement en réanimation
+                                                        </p>
+                                                        <a href="" class="btn btn-warning">{{ data.0.rea }}</a>
+                                                </div>
+                                        </div>
+                                </div>
+                                <div class="col-12 col-md-4 deces">
+                                        <div class="card shadow border-0">
+                                                <div class="card-body">
+                                                        <h5 class="card-title">Décès</h5>
+                                                        <p class="card-text">
+                                                                Nombre de personnes décédés depuis le début de la pandémie
+                                                        </p>
+                                                        <a href="" class="btn btn-warning">{{ data.0.dc_tot }}</a>
+                                                </div>
+                                        </div>
+                                </div>
+                                <div class="col-12 col-md-4 total-gueris">
+                                        <div class="card shadow border-0">
+                                                <div class="card-body">
+                                                        <h5 class="card-title">Guérisons</h5>
+                                                        <p class="card-text">
+                                                                Nombre total de retour à domicile
+                                                        </p>
+                                                        <a href="" class="btn btn-warning">{{ data.0.rad }}</a>
+                                                </div>
+                                        </div>
+                                </div>
+                                <div class="col-12 col-md-4 cas-confirmes">
+                                        <div class="card shadow border-0">
+                                                <div class="card-body">
+                                                        <h5 class="card-title">Nouveaux Cas confirmés</h5>
+                                                        <p class="card-text">
+                                                                Nombre de nouveaux cas confirmés (J-1 date de résultats)
+                                                        </p>
+                                                        <a href="" class="btn btn-warning">{{ data.0.conf_j1 }}</a>
+                                                </div>
+                                        </div>
+                                </div>
+                                <div class="col-12 col-md-4 data-source">
+                                        <div class="card shadow border-0">
+                                                <div class="card-body">
+                                                        <h5 class="card-title">Source de données</h5>
+                                                        <p class="card-text">
+                                                                Dernière mise à jour
+                                                        </p>
+                                                        <a href="" class="btn btn-warning">{{ data.0.date}}</a>
+                                                </div>
+                                        </div>
+                                </div>
+                        </div>
+                </div>
+        </section>
+        </div>
 {% endblock %}
